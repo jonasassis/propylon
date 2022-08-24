@@ -40,7 +40,7 @@ export default class APIService {
             Authorization: `Bearer ${token}`
         }}
 
-      axios.post('http://127.0.0.1:8000/api/files/register/', formData, config)
+      return axios.post('http://127.0.0.1:8000/api/files/register/', formData, config)
 
       }
 

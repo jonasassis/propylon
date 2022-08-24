@@ -53,15 +53,6 @@ def showFile(request):
     serializer = FileSerializer(files, many=True)
     return Response(serializer.data)
 
-# @api_view(['GET'])
-# def getFile(request, pk):
-#     file = None
-#     for i in files:
-#         if i['username'] == pk:
-#             product = i
-#             break
-#     return Response(product)
-
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
@@ -88,9 +79,6 @@ def registerFile(request):
         username = user,
         revision = revision
     )
-
-    
-    print(newfile.pk)
 
     serializer = FileSerializer(newfile, many=False)
     return Response(serializer.data)

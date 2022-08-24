@@ -5,14 +5,14 @@ import photo from '../img/file.png';
 
 function FormFile({ file }) {
   return (
-    <Card className="my-2 p-2 rounded">
+    <Card key='card' className="my-2 p-2 rounded">
 
-      <Card.Text class="text-center" as="h5">
+      <Card.Text key='card-file' className="text-center" as="h5">
         {file.filename}
       </Card.Text>
 
-      <Link to={`/file/${file.id}`}>
-        <Card.Img width="150" class="img-thumbnail rounded mx-auto d-block"  src={photo} />
+      <Link key='link-image' to={`/file/${file.id}`}>
+        <Card.Img key='image' width="150" className="img-thumbnail rounded mx-auto d-block"  src={photo} />
       </Link>
     </Card>
   )

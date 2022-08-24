@@ -3,7 +3,7 @@ import { Form, Button, Row, Col, Card } from 'react-bootstrap'
 import { useCookies } from 'react-cookie';
 import { useNavigate } from 'react-router-dom'
 import APIService from '../components/APIService';
-
+import Message from '../components/Message'
 import FormFile from '../components/FormFile'
 
 
@@ -14,16 +14,18 @@ function HomeScreen() {
   const [upload, setUpload] = useState(null)
   const [url, setUrl] = useState('')
   const [token] = useCookies(['access_token'])
+  const [error, setError] = useState('')
 
 
   const navigate = useNavigate();
 
   useEffect(() => {
     const goToHomePage = () => navigate('/login');
-    if (!token['access_token'] || token['access_token'] == 'undefined') {
+    if (!token['access_token'] || token['access_token'] === 'undefined') {
       goToHomePage();
     };
-  }, [token])
+  }, [token, navigate])
+
 
   useEffect(() => {
     fetch('http://127.0.0.1:8000/api/files/', {
@@ -37,7 +39,7 @@ function HomeScreen() {
       .then(resp => setFiles(resp))
       .catch(error => console.log(error))
 
-  }, [])
+  }, [token])
 
   useEffect(() => {
     fetch('http://127.0.0.1:8000/api/files/urls/', {
@@ -51,7 +53,7 @@ function HomeScreen() {
       .then(resp => setUrls(resp))
       .catch(error => console.log(error))
 
-  }, [])
+  }, [token])
 
   const uploadFileHandler = (e) => {
     const upload = e.target.files[0]
@@ -66,11 +68,20 @@ function HomeScreen() {
     formData.append('url', url)
 
     APIService.RegisterFile(formData, token['access_token'])
-    window.location.reload()
+      .then(response => {
+        if (response.status === 200) {
+          window.location.reload()
+        }
+        if (response.detail) {
+          setError(response.detail)
+        }
+      })
+
   }
 
   return (
     <div>
+      {error ? <Message variant='danger'>{error}</Message> : null}
       <h1>New File</h1>
       <Row>
         <Form>
@@ -108,7 +119,7 @@ function HomeScreen() {
             <Card.Header as={'h3'}>Location: {uniqueurl.url}</Card.Header>
             <Card.Body>
               <Row>
-                {allfiles.filter(url => url.url == uniqueurl.url).map(fl => (
+                {allfiles.filter(url => url.url === uniqueurl.url).map(fl => (
                   <Col key={fl._id} sm={12} md={6} lg={4} xl={3}>
                     <FormFile file={fl} />
                   </Col>
