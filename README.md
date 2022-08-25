@@ -27,7 +27,7 @@
 
 ## Run coverage
 
--   Run coverage and see report
+-   Run coverage and see report (Execute with virtualenv activated)
     ```
     cd backend
     coverage run .\manage.py test

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card } from 'react-bootstrap'
+import { Card, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import photo from '../img/file.png';
 
@@ -12,8 +12,15 @@ function FormFile({ file }) {
       </Card.Text>
 
       <Link key='link-image' to={`/file/${file.id}`}>
-        <Card.Img key='image' width="150" className="img-thumbnail rounded mx-auto d-block"  src={photo} />
+        <Card.Img key='image'  className="img-thumbnail rounded mx-auto d-block"  src={photo} />
       </Link>
+      <div>&nbsp;</div>
+      <Link key='link-image-btn' className="text-center " to={`/file/${file.id}`}>
+        <Button key='button' className='btn btn-primary btn-success '>View all Versions</Button>
+      </Link>
+
+      
+
     </Card>
   )
 }

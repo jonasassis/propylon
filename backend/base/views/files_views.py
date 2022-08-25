@@ -33,6 +33,7 @@ def getFilesByID(request, pk):
     files = File.objects.all()
     files = files.filter(filename=filename)
     files = files.filter(url=url)
+    files = files.filter(username=request.user)
 
     serializer = FileSerializer(files, many=True)
     return Response(serializer.data)
@@ -42,7 +43,7 @@ def getFilesByID(request, pk):
 @permission_classes([IsAuthenticated])
 def getFilesOnlyURL(request):
 
-    files = File.objects.values('url').annotate(count=Count('url'))
+    files = File.objects.values('url').filter(username=request.user).annotate(count=Count('url'))
     serializer = FileSerializerOnlyURL(files, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
 
@@ -62,6 +63,7 @@ def registerFile(request):
     queryset = File.objects.all()
     queryset = queryset.filter(filename=data['file'].name)
     queryset = queryset.filter(url=urlslash)
+    queryset = queryset.filter(username=request.user)
     revision = len(queryset)
 
     File.objects.MEDIA_URL = data['url']

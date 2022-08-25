@@ -69,7 +69,7 @@ function HomeScreen() {
 
     APIService.RegisterFile(formData, token['access_token'])
       .then(response => {
-        if (response.status === 200) {
+        if (response.status === 201) {
           window.location.reload()
         }
         if (response.detail) {
