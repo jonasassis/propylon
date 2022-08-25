@@ -2,9 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 import os
 
-# Create your models here.
-
-
+# make url field lower
 class NameField(models.CharField):
     def __init__(self, *args, **kwargs):
         super(NameField, self).__init__(*args, **kwargs)
@@ -19,6 +17,7 @@ def get_upload_path(instance, filename):
     return os.path.join(url, filename)
 
 
+# model file
 class File(models.Model):
     id = models.AutoField(primary_key=True, editable=False)
     file = models.FileField(upload_to=get_upload_path, null=True, blank=True)

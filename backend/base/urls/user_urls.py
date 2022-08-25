@@ -1,6 +1,7 @@
 from django.urls import path
 from base.views import users_views as views
 
+# routes
 urlpatterns = [
     path('register/', views.registerUser, name="register"),
     path('login/', views.MyTokenObtainPairView.as_view(), name='token_obtain_pair'),

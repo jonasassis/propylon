@@ -4,6 +4,7 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from .models import File
 
 
+# Converting object User into data
 class UserSerializer(serializers.ModelSerializer):
 
     name = serializers.SerializerMethodField(read_only=True)
@@ -24,6 +25,7 @@ class UserSerializer(serializers.ModelSerializer):
         return name
 
 
+# Converting object User into data with TOKEN
 class UserSerializerWithToken(UserSerializer):
 
     id = serializers.SerializerMethodField(read_only=True)
@@ -37,11 +39,15 @@ class UserSerializerWithToken(UserSerializer):
         token = RefreshToken.for_user(obj)
         return str(token.access_token)
 
+
+# Converting object File into data
 class FileSerializer(serializers.ModelSerializer):
     class Meta:
         model = File
         fields = '__all__'
 
+
+# Converting object URLS into data
 class FileSerializerOnlyURL(serializers.ModelSerializer):
     class Meta:
         model = File
