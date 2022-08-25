@@ -1,4 +1,18 @@
 # Welcome
+
+Project web application that allows users to store, at later retrieve, files at a specified URL.
+Important links
+- Backend
+[Doc Swagger] - http://127.0.0.1:8000/
+[Doc redoc] - http://127.0.0.1:8000/redoc
+[Admin] - http://127.0.0.1:8000/admin/
+- FrontEnd
+[Initial] - http://localhost:3000
+[Login] - http://localhost:3000/login
+[Register] - [http://localhost:3000/register]
+[files] - [http://localhost:3000/]
+[your files] - [http://localhost:3000/file/<id-file>]
+
 ## Install and run locally windows via powershell
 
 -   Create python3 virtual environment and activate it after clone project
