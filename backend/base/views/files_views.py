@@ -10,7 +10,7 @@ from base.serializers import FileSerializer, FileSerializerOnlyURL
 from django.db.models import Count
 
 
-
+# [GET] - Get all files / user auth
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def getFiles(request):
@@ -20,7 +20,7 @@ def getFiles(request):
     serializer = FileSerializer(files, many=True)
     return Response(serializer.data)
 
-
+# [GET] - Get all version of files by file ID
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def getFilesByID(request, pk):
@@ -39,6 +39,7 @@ def getFilesByID(request, pk):
     return Response(serializer.data)
 
 
+# [GET] - Get all URLS
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def getFilesOnlyURL(request):
@@ -48,6 +49,7 @@ def getFilesOnlyURL(request):
     return Response(serializer.data, status=status.HTTP_200_OK)
 
 
+# [POST] - Insert new files in DB
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def registerFile(request):

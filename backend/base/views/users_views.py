@@ -28,7 +28,7 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
 class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
 
-
+# [GET] - User profile by user auth
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def getUserProfile(request):
@@ -37,6 +37,7 @@ def getUserProfile(request):
     return Response(serializer.data, status=status.HTTP_200_OK)
 
 
+# [POST] - Insert new user in DB
 @api_view(['POST'])
 def registerUser(request):
 
