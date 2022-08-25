@@ -10,7 +10,6 @@
     
 -   Install requirements
     ```
-    cd backend
     pip install -r requirements.txt
     ```
 -   Run development server
