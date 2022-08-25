@@ -1,17 +1,22 @@
 # Welcome
 
-Project web application that allows users to store, at later retrieve, files at a specified URL.
-Important links
-- Backend
-[Doc Swagger] - http://127.0.0.1:8000/
-[Doc redoc] - http://127.0.0.1:8000/redoc
-[Admin] - http://127.0.0.1:8000/admin/
-- FrontEnd
-[Initial] - http://localhost:3000
-[Login] - http://localhost:3000/login
-[Register] - [http://localhost:3000/register]
-[files] - [http://localhost:3000/]
-[your files] - [http://localhost:3000/file/<id-file>]
+Project web application that allows users to store, at later retrieve, files at a specified URL. In this document, you can find details about **INSTALL INSTRUCTIONS** and **API documentation**.
+
+- [Install and run locally windows via powershell](README.md#install-and-run-locally-windows-via-powershell)
+- [Install and run locally Linux](README.md#install-and-run-locally-linux)
+- [Run coverage](README.md#run-coverage)
+
+#### BACKEND (django react)
+- [ **Doc Swagger** ] - http://127.0.0.1:8000/
+- [ **Doc redoc** ] - http://127.0.0.1:8000/redoc
+- [ **Admin** ] - http://127.0.0.1:8000/admin/
+
+#### FRONTEND (react js)
+- [ **Initial** ] - http://localhost:3000
+- [ **Login** ] - http://localhost:3000/login
+- [ **Register** ] - http://localhost:3000/register
+- [ **Files** ] - http://localhost:3000/
+- [ **Your files** ] - http://localhost:3000/file/<id-file>
 
 ## Install and run locally windows via powershell
 
