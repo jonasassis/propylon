@@ -14,6 +14,7 @@
     ```
 -   Run development server
     ```
+    cd backend
     python manage.py runserver
     ```
 
