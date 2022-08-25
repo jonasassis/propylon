@@ -44,14 +44,7 @@ def getFilesOnlyURL(request):
 
     files = File.objects.values('url').annotate(count=Count('url'))
     serializer = FileSerializerOnlyURL(files, many=True)
-    return Response(serializer.data)
-
-@api_view(['GET'])
-def showFile(request):
-
-    files = File.objects.order_by("createdAt")
-    serializer = FileSerializer(files, many=True)
-    return Response(serializer.data)
+    return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 @api_view(['POST'])
@@ -81,4 +74,4 @@ def registerFile(request):
     )
 
     serializer = FileSerializer(newfile, many=False)
-    return Response(serializer.data)
+    return Response(serializer.data, status=status.HTTP_201_CREATED)

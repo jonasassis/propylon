@@ -34,7 +34,7 @@ class MyTokenObtainPairView(TokenObtainPairView):
 def getUserProfile(request):
     user = request.user
     serializer = UserSerializer(user, many=False)
-    return Response(serializer.data)
+    return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 @api_view(['POST'])
@@ -52,7 +52,7 @@ def registerUser(request):
         )
 
         serializer = UserSerializerWithToken(user, many=False)
-        return Response(serializer.data)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
     except Exception as e:
         message = {'detail':'User with this email or username already exists'}
         return Response(message, status=status.HTTP_400_BAD_REQUEST)
