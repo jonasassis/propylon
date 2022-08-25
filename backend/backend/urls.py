@@ -27,3 +27,5 @@ urlpatterns = [
     path('api/users/', include('base.urls.user_urls')),
 ]
 
+urlpatterns += static (settings.MEDIA_URL,  document_root=settings.MEDIA_ROOT)
+
